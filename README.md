@@ -1,0 +1,1 @@
+# RegistrQR_Navarrete_Salazar_009DD
