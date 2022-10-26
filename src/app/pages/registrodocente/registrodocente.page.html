@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="duoc"  mode="ios" >
+    <ion-buttons slot="start" > 
+      <ion-back-button text="" icon="chevron-back-outline" color="amarilloduoc"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo">
+
+  <ion-card class="marginTopregistro" color="duoc">
+    <ion-card-title class="ion-padding tituloCard">Docente</ion-card-title>
+
+ 
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label >Email Institucional: </ion-label>
+      <ion-input type="email" placeholder="Email" name="email" value="" [(ngModel)]="usuario.email"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Contraseña: </ion-label>
+      <ion-input type="password" placeholder="Contraseña" name="password" value="" [(ngModel)]="usuario.password"
+        required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >RUT: </ion-label>
+      <ion-input type="rut" placeholder="Ej: 20790038-9" name="rut" value="" [(ngModel)]="usuario.rut" 
+        required color="duoc" pattern="([0-9]+)-([0-9])">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+   
+        <ion-checkbox checked [(ngModel)]="usuario.profesor" name="profesor" disabled></ion-checkbox>
+        <ion-label>Profesor</ion-label>
+   
+    </ion-item>
+    <ion-button color="duoc" [disabled]="formulario.invalid" type="submit" expand="block" routerLink="/inicio">
+      Registrarse
+    </ion-button>
+
+    
+    </form>
+ 
+  </ion-card>
+
+
+
+  
+</ion-content>

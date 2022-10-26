@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-toolbar color="duoc"  mode="ios" >
+    
+  
+    <ion-buttons slot="start" >
+      <ion-button (click)="mostrarMenu()" >
+        <ion-icon slot="start" name="menu-outline" color="amarilloduoc" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo">LeerQR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card >
+    <ion-card-content >     
+      <p class="parrafo1">
+        Si el profesor ya generó un código QR toca en el botón de abajo para abrir la cámara y leerlo
+      </p> 
+    </ion-card-content>   
+  </ion-card>
+
+    
+    <ion-button  color="warning" (click)="leerqr()" expand="full" fill="solid" shape="round">
+    Leer Código QR
+  </ion-button>
+
+ 
+
+</ion-content>

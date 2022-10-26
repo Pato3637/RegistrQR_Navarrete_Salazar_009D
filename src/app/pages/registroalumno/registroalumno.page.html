@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="duoc"  mode="ios" >
+    <ion-buttons slot="start" > 
+      <ion-back-button text="" icon="chevron-back-outline" color="amarilloduoc"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo">
+
+  <ion-card class="marginTopregistro" color="duoc">
+    <ion-card-title class="ion-padding tituloCard">Alumno</ion-card-title>
+
+ 
+    <form [formGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
+    <ion-item>
+      <!--<ion-label>Nombre: </ion-label>-->
+      <ion-input type="text" formControlName="nombre" placeholder="Nombre" required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-label>Correo Institucional: </ion-label>-->
+      <ion-input type="text" formControlName="correo" placeholder="Correo Institucional" required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-label>Contraseña: </ion-label>-->
+      <ion-input type="password" formControlName="password" placeholder="Contraseña" required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-label>Confirmar contraseña: </ion-label>-->
+      <ion-input type="password" formControlName="confirmaPass" placeholder="Confirmar contraseña" required color="duoc">
+      </ion-input>
+    </ion-item>
+
+    <ion-button color="duoc" (click)="CrearUsuario()" type="submit" expand="block">
+      Registrarse
+    </ion-button>
+
+    <ion-button color="amarilloduoc" type="submit" expand="full" fill="outline" [routerLink]="['/inicio']">
+      Iniciar sesión
+    </ion-button>
+
+    </form>
+ 
+  </ion-card>
+
+  
+
+  
+</ion-content>
