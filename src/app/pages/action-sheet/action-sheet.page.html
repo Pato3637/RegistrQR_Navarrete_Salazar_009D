@@ -17,16 +17,16 @@
   <ion-card >
     <ion-card-content >     
       <p class="parrafo1">
-        Si el profesor ya generó un código QR toca en el botón de abajo para abrir la cámara y leerlo
+        Si el profesor ya generó un código QR toca en el botón de abajo para abrir la cámara y escanearlo
       </p> 
     </ion-card-content>   
   </ion-card>
 
     
-    <ion-button  color="warning" (click)="leerqr()" expand="full" fill="solid" shape="round">
-    Leer Código QR
-  </ion-button>
-
+    <ion-button  color="warning" (click)="scan()" expand="full" fill="solid" shape="round">
+    Escanear Código QR
+    </ion-button>
+    {{code}}
  
 
 </ion-content>

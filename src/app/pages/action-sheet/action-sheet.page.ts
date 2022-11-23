@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, MenuController, NavController } from '@ionic/angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 @Component({
   selector: 'app-action-sheet',
   templateUrl: './action-sheet.page.html',
@@ -7,9 +8,12 @@ import { AlertController, MenuController, NavController } from '@ionic/angular';
 })
 export class ActionSheetPage implements OnInit {
 
+  code: any;
+
   constructor(private alertController: AlertController,
     private menuController: MenuController,
-    private navCtrl: NavController) { }
+    private navCtrl: NavController,
+    private barcodeScanner: BarcodeScanner) { }
 
   ngOnInit() {
   }
@@ -17,17 +21,13 @@ export class ActionSheetPage implements OnInit {
     this.menuController.open('first')
   }
 
-  async leerqr() {    //1ra Alerta
-    let date: Date = new Date();
-    const alert = await this.alertController.create({
-      
-      header: 'Solicitud de acceso a la cámara',
-      message: '*Accediendo a la cámara...*',
-      buttons: [
-        {text:'Ok',}],
+  async scan() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.code = barcodeData.text;
+      console.log('Barcode data', this.code);
+    }).catch(err => {
+      console.log('Error', err);
     });
-
-    await alert.present();
   }
 
 }

@@ -14,6 +14,7 @@ export class RegistroalumnoPage implements OnInit {
 
   formularioRegistro: FormGroup;
   newUsuario: Usuario = <Usuario>{};
+  usuarios: Usuario[] =[]; 
 
   constructor(private menuController: MenuController,
               private registroService: RegistroserviceService,
@@ -36,6 +37,8 @@ export class RegistroalumnoPage implements OnInit {
 
   async CrearUsuario(){
     var form = this.formularioRegistro.value;
+    var existe = 0;
+
     if (this.formularioRegistro.invalid){
       this.alertError();
       console.log('error')
@@ -45,16 +48,41 @@ export class RegistroalumnoPage implements OnInit {
       this.alertErrorPass();
       console.log('errorPass')
     }else{
+      
 
     this.newUsuario.nomUsuario = form.nombre,
     this.newUsuario.correoUsuario = form.correo,
     this.newUsuario.passUsuario = form.password,
     this.newUsuario.repassUsuario = form.confirmaPass;
-    this.registroService.addDatos(this.newUsuario).then(data=>{
-      this.newUsuario = <Usuario>{};
-      this.showToast('Datos Ingresados Correctamente');
-    });
-    this.formularioRegistro.reset();
+    this.registroService.getUsuarios().then(datos=>{ 
+      this.usuarios = datos; 
+  
+      if (!datos || datos.length==0){
+        this.registroService.addDatos(this.newUsuario).then(dato=>{ 
+          this.newUsuario=<Usuario>{};
+          this.showToast('Usuario Creado Correctamente');
+        });
+        this.formularioRegistro.reset();
+      }else{
+      
+      for (let obj of this.usuarios){
+        if (this.newUsuario.correoUsuario == obj.correoUsuario){
+          existe = 1;
+        }
+      }//Fin del for
+    
+        if (existe == 1){
+          this.alertCorreoDuplicado();
+        }
+        else{
+          this.registroService.addDatos(this.newUsuario).then(dato=>{ 
+            this.newUsuario=<Usuario>{};
+            this.showToast('Usuario Creado Correctamente');
+          });
+          this.formularioRegistro.reset();
+        }
+      }
+      }) 
   }
   }
   }
@@ -72,6 +100,15 @@ export class RegistroalumnoPage implements OnInit {
     const alert = await this.alertController.create({ 
       header: 'Error..',
       message: 'Se deben completar correctamente todos los datos',
+      buttons: ['Aceptar']
+    })
+    await alert.present();
+  }
+
+  async alertCorreoDuplicado(){
+    const alert = await this.alertController.create({ 
+      header: '¡Error!',
+      message: 'Ya existe una cuenta con este correo',
       buttons: ['Aceptar']
     })
     await alert.present();
