@@ -24,5 +24,7 @@ Para el correcto uso del lector QR instalar las siguientes librerias:
 npm install phonegap-plugin-barcodescanner
 npm install @ionic-native/barcode-scanner
 
+Se necesita de un localhost para poder iniciar correctamente la aplicación en móviles y así visualizar las asistencias registradas.
+
 
 
