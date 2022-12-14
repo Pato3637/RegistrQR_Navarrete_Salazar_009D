@@ -1,11 +1,10 @@
-
 <ion-header>
-  <ion-toolbar color="duoc"  mode="ios" >
-    
-  
-    <ion-buttons slot="start" >
-      <ion-button (click)="mostrarMenu()" >
-        <ion-icon slot="start" name="menu-outline" color="amarilloduoc" ></ion-icon>
+  <ion-toolbar color="duoc" mode="ios">
+
+
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" color="amarilloduoc"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title class="titulo">LeerQR</ion-title>
@@ -14,19 +13,33 @@
 
 <ion-content>
 
-  <ion-card >
-    <ion-card-content >     
+  <ion-card>
+    <ion-card-content>
       <p class="parrafo1">
         Si el profesor ya generó un código QR toca en el botón de abajo para abrir la cámara y escanearlo
-      </p> 
-    </ion-card-content>   
+      </p>
+    </ion-card-content>
   </ion-card>
 
-    
-    <ion-button  color="warning" (click)="scan()" expand="full" fill="solid" shape="round">
+
+  <ion-button color="warning" (click)="scan()" expand="full" fill="solid" shape="round">
     Escanear Código QR
-    </ion-button>
-    {{code}}
- 
+  </ion-button>
+  <ion-card>
+
+  
+      <ion-item>Se registró:</ion-item>
+      <ion-input type="text" [(ngModel)]="newAsistencia.registro">{{code}}</ion-input>
+      <ion-item>
+        <ion-button (click)="reload()" expand="block" fill="clear" shape="round" slot="end" color="tertiary">
+          Nuevo registro
+        </ion-button>
+        <ion-button (click)="registro()" expand="block" fill="clear" shape="round" slot="start" color="tertiary">
+          Registrar
+        </ion-button>
+      </ion-item>
+  </ion-card>
+
+
 
 </ion-content>

@@ -24,6 +24,10 @@ export class AppComponent {
       icon:'aperture-outline',
       name: 'Leer QR',
       redirecTo:'/action-sheet'
+    }, {
+      icon:'people-outline',
+      name: 'Asistencia',
+      redirecTo:'/qrgenerado'
     },   
     {
       icon:'airplane-outline',
